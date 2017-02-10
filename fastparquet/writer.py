@@ -101,6 +101,9 @@ def find_type(data, fixed_text=None, object_encoding=None, times='int'):
         elif object_encoding == 'bson':
             type, converted_type, width = (parquet_thrift.Type.BYTE_ARRAY,
                                            parquet_thrift.ConvertedType.BSON, None)
+        elif object_encoding == 'int64':
+            type, converted_type, width = (parquet_thrift.Type.INT64, None, 64)
+
         else:
             raise ValueError('Object encoding (%s) not one of '
                              'infer|utf8|bytes|json|bson' % object_encoding)
